@@ -3,8 +3,8 @@ from datetime import datetime, timedelta
 
 class Calculator :
     # final properties
-    min = None
-    max = None
+    min     = None
+    max     = None
     threads = None
 
 
