@@ -1,3 +1,6 @@
+from .results.result import Result
+from datetime import datetime, timedelta
+
 class Calculator :
     # final properties
     min = None
@@ -23,23 +26,22 @@ class Calculator :
             raise ValueError('threads is not a positive integer')
 
     def run(self) :
-        primes    = 0
-        notPrimes = 0
+        results = []
+
         for i in range(self.min, self.max) :
-            if self.testIsPrime(i) :
-                print(str(i) + ' is prime')
-                primes += 1
-            else :
-                print(str(i) + ' is not prime')
-                notPrimes += 1
+            results.append(self.testIsPrime(i))
 
-        print('')
-        print('Found ' + str(primes) + ' primes')
-        print('Found ' + str(notPrimes) + ' not primes')
+        for result in results :
+            if result.getIsPrime() :
+                print(result.getResultString())
 
-    def testIsPrime(self, test: int):
+    def testIsPrime(self, test: int) :
+        isPrime   = True
+        startTime = datetime.now()
+
         for i in range(2, test - 1) :
             if (float(test)/i) == int(test/i) :
-                return False
+                isPrime = False
+                break
 
-        return True
+        return Result(test, isPrime, (startTime - datetime.now()).microseconds)
