@@ -1,3 +1,30 @@
 #!/usr/bin/python3
 
-print('Hello world')
+# add current dir to python path, allows us to pull modules in
+import sys, os
+sys.path.append(os.getcwd())
+
+from python_prime_calculator.calculator import Calculator
+
+def printUsage() :
+    print('Usage:')
+    print('    bin/python-prime-calculator <min> <max> <threads>')
+    print('')
+    print('Required args:')
+    print('min: lower bound number to test - must be greater than 0')
+    print('max: upper bound number to test - must be greater than min ')
+    print('')
+    print('Optional args:')
+    print('threads: number of threads to use for prime calculations - default 1')
+    return
+
+min     = int(sys.argv[1]) if 3 <= len(sys.argv) else None
+max     = int(sys.argv[2]) if 3 <= len(sys.argv) else None
+threads = int(sys.argv[3]) if 4 <= len(sys.argv) else 1
+
+if (min is None or max is None) :
+    printUsage()
+    exit
+
+calc = Calculator(min, max, threads)
+calc.run()
