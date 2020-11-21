@@ -11,11 +11,11 @@ def printUsage() :
     print('    bin/python-prime-calculator <min> <max> <threads>')
     print('')
     print('Required args:')
-    print('min: lower bound number to test - must be greater than 0')
-    print('max: upper bound number to test - must be greater than min ')
+    print('    min: lower bound number to test - must be greater than 0')
+    print('    max: upper bound number to test - must be greater than min ')
     print('')
     print('Optional args:')
-    print('threads: number of threads to use for prime calculations - default 1')
+    print('    threads: number of threads to use for prime calculations - default 1')
     return
 
 min     = int(sys.argv[1]) if 3 <= len(sys.argv) else None
