@@ -1,4 +1,5 @@
 from .results.result import Result
+from .results.result_collection import ResultCollection
 from datetime import datetime, timedelta
 
 class Calculator :
@@ -6,7 +7,6 @@ class Calculator :
     min     = None
     max     = None
     threads = None
-
 
     def __init__(self, min: int, max: int, threads: int) :
         self.validateArgs(min, max, threads)
@@ -26,12 +26,12 @@ class Calculator :
             raise ValueError('threads is not a positive integer')
 
     def run(self) :
-        results = []
+        results = ResultCollection()
 
         for i in range(self.min, self.max) :
-            results.append(self.testIsPrime(i))
+            results.registerResult(self.testIsPrime(i))
 
-        for result in results :
+        for result in results.getList() :
             if result.getIsPrime() :
                 print(result.getResultString())
 
