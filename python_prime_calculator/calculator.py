@@ -9,7 +9,7 @@ class Calculator :
     threads = None
     showAll = False
 
-    def __init__(self, min: int, max: int, threads: int, showAll: bool = False) :
+    def __init__(self, min: int, max: int, threads: int, showAll: bool = False) -> None:
         self.validateArgs(min, max, threads)
 
         self.min     = min
@@ -17,7 +17,7 @@ class Calculator :
         self.threads = threads
         self.showAll = showAll
 
-    def validateArgs(self, min: int, max: int, threads: int) :
+    def validateArgs(self, min: int, max: int, threads: int) -> None :
         if min < 2 :
             raise ValueError('min is not integer greater than 1')
 
@@ -27,7 +27,7 @@ class Calculator :
         if 1 > threads:
             raise ValueError('threads is not a positive integer')
 
-    def run(self) :
+    def run(self) -> None :
         results = ResultCollection()
         test    = Tester()
 

@@ -5,15 +5,15 @@ class Result :
     isPrime = None
     timeUs  = None
 
-    def __init__(self, value: int, isPrime: bool, timeUs: int) :
+    def __init__(self, value: int, isPrime: bool, timeUs: int) -> None :
         self.value   = value
         self.isPrime = isPrime
         self.timeUs  = timeUs
 
-    def getIsPrime(self) :
+    def getIsPrime(self) -> bool :
         return self.isPrime
 
-    def getResultString(self) :
+    def getResultString(self) -> str :
         if None == self.value or None == self.isPrime or None == self.timeUs :
             raise ValueError('Not all required result properties set')
 

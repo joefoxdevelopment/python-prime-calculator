@@ -6,7 +6,7 @@ sys.path.append(os.getcwd())
 
 from python_prime_calculator.calculator import Calculator
 
-def printUsage() :
+def printUsage() -> None:
     print('Usage:')
     print('    bin/python-prime-calculator <min> <max> <threads>')
     print('')
@@ -26,7 +26,8 @@ showAll = ('y' == sys.argv[4].lower() if 5 <= len(sys.argv) else False)
 
 if (min is None or max is None) :
     printUsage()
-    exit
+    exit(0)
 
 calc = Calculator(min, max, threads, showAll)
 calc.run()
+exit(0)
