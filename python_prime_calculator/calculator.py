@@ -34,6 +34,11 @@ class Calculator :
         for i in range(self.min, self.max) :
             results.registerResult(test.testValue(i))
 
-        for result in results.getList() :
+        summary = results.getSummary()
+        for result in summary['results'] :
             if result.getIsPrime() or self.showAll :
                 print(result.getResultString())
+
+        print('')
+        print('Found ' + summary['primes'] + ' prime numbers between ' + str(self.min) + ' and ' + str(self.max))
+        print('Performed ' + summary['testsPerformed'] + ' tests in ' + summary['totalTestTime'] + ' microseconds')
