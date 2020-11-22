@@ -7,13 +7,15 @@ class Calculator :
     min     = None
     max     = None
     threads = None
+    showAll = False
 
-    def __init__(self, min: int, max: int, threads: int) :
+    def __init__(self, min: int, max: int, threads: int, showAll: bool = False) :
         self.validateArgs(min, max, threads)
 
         self.min     = min
         self.max     = max
         self.threads = threads
+        self.showAll = showAll
 
     def validateArgs(self, min: int, max: int, threads: int) :
         if min < 2 :
@@ -33,5 +35,5 @@ class Calculator :
             results.registerResult(test.testValue(i))
 
         for result in results.getList() :
-            if result.getIsPrime() :
+            if result.getIsPrime() or self.showAll :
                 print(result.getResultString())

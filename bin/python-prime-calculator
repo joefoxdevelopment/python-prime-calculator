@@ -16,15 +16,17 @@ def printUsage() :
     print('')
     print('Optional args:')
     print('    threads: number of threads to use for prime calculations - default 1')
+    print('    showAll: show all tested results, use letter "Y" (insensitive) - default false')
     return
 
-min     = int(sys.argv[1]) if 3 <= len(sys.argv) else None
-max     = int(sys.argv[2]) if 3 <= len(sys.argv) else None
-threads = int(sys.argv[3]) if 4 <= len(sys.argv) else 1
+min     = int(sys.argv[1])            if 3 <= len(sys.argv) else None
+max     = int(sys.argv[2])            if 3 <= len(sys.argv) else None
+threads = int(sys.argv[3])            if 4 <= len(sys.argv) else 1
+showAll = ('y' == sys.argv[4].lower() if 5 <= len(sys.argv) else False)
 
 if (min is None or max is None) :
     printUsage()
     exit
 
-calc = Calculator(min, max, threads)
+calc = Calculator(min, max, threads, showAll)
 calc.run()
