@@ -1,6 +1,6 @@
 from .results.result import Result
 from .results.result_collection import ResultCollection
-from datetime import datetime, timedelta
+from .tests.tester import Tester
 
 class Calculator :
     # final properties
@@ -27,21 +27,11 @@ class Calculator :
 
     def run(self) :
         results = ResultCollection()
+        test    = Tester()
 
         for i in range(self.min, self.max) :
-            results.registerResult(self.testIsPrime(i))
+            results.registerResult(test.testValue(i))
 
         for result in results.getList() :
             if result.getIsPrime() :
                 print(result.getResultString())
-
-    def testIsPrime(self, test: int) :
-        isPrime   = True
-        startTime = datetime.now()
-
-        for i in range(2, test - 1) :
-            if (float(test)/i) == int(test/i) :
-                isPrime = False
-                break
-
-        return Result(test, isPrime, (startTime - datetime.now()).microseconds)
