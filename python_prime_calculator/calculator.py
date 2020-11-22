@@ -32,12 +32,13 @@ class Calculator :
         test    = Tester()
 
         for i in range(self.min, self.max) :
-            results.registerResult(test.testValue(i))
+            result = test.testValue(i)
+            results.registerResult(result)
 
-        summary = results.getSummary()
-        for result in summary['results'] :
             if result.getIsPrime() or self.showAll :
                 print(result.getResultString())
+
+        summary = results.getSummary()
 
         print('')
         print('Found ' + summary['primes'] + ' prime numbers between ' + str(self.min) + ' and ' + str(self.max))
