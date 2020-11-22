@@ -11,4 +11,6 @@ class Tester :
                 isPrime = False
                 break
 
-        return Result(value, isPrime, (startTime - datetime.now()).microseconds)
+        runtime = datetime.now() - startTime
+        print(runtime)
+        return Result(value, isPrime, int(runtime.total_seconds() * 1000000))
